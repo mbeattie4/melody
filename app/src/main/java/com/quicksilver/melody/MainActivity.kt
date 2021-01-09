@@ -29,7 +29,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.quicksilver.melody.ui.MelodyTheme
-import kotlin.math.absoluteValue
 import kotlin.math.max
 
 class MainActivity : AppCompatActivity() {
