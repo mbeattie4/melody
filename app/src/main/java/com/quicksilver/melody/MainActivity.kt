@@ -73,20 +73,20 @@ fun NewsStory() {
         Spacer(modifier = Modifier.preferredHeight(16.dp))
 
         Text(
-                text = "A day in Shark Fin Cove",
-                style = typography.h6,
-                color = Color.Blue,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
-                modifier = Modifier.padding(4.dp)
+            text = "A day in Shark Fin Cove",
+            style = typography.h6,
+            color = Color.Blue,
+            maxLines = 2,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.padding(4.dp)
         )
         Text(text = "Davenport, California", style = typography.body2)
         Text(text = "December 2018", style = typography.body2)
 
         val counterState = remember { mutableStateOf(0) }
         Counter(
-                count = counterState.value,
-                updateCount = { newCount -> counterState.value = newCount }
+            count = counterState.value,
+            updateCount = { newCount -> counterState.value = newCount }
         )
     }
 }
@@ -100,7 +100,8 @@ fun Counter(count: Int, updateCount: (Int) -> Unit) {
 
 @Composable
 fun PhotographerCard(modifier: Modifier = Modifier) {
-    Row(modifier
+    Row(
+        modifier
             .padding(8.dp)
             .clip(RoundedCornerShape(4.dp))
             .background(MaterialTheme.colors.surface)
@@ -108,16 +109,14 @@ fun PhotographerCard(modifier: Modifier = Modifier) {
             .padding(16.dp)
     ) {
         Surface(
-                modifier = Modifier.preferredSize(50.dp),
-                shape = CircleShape,
-                color = MaterialTheme.colors.onSurface.copy(alpha = 0.2f)
+            modifier = Modifier.preferredSize(50.dp),
+            shape = CircleShape,
+            color = MaterialTheme.colors.onSurface.copy(alpha = 0.2f)
         ) {
 
         }
         Column(
-                modifier = Modifier
-                        .padding(start = 8.dp)
-                        .align(Alignment.CenterVertically)
+            modifier = Modifier.padding(start = 8.dp).align(Alignment.CenterVertically)
         ) {
             Text(text = "Alfred Sisley", fontWeight = FontWeight.Bold)
             Providers(AmbientContentAlpha provides ContentAlpha.medium) {
@@ -138,18 +137,18 @@ fun PhotographerCardPreview() {
 @Composable
 fun LayoutsCodelab() {
     Scaffold(
-            topBar = {
-                TopAppBar(
-                        title = {
-                            Text(text = "LayoutsCodelab")
-                        },
-                        actions = {
-                            IconButton(onClick = { /* Do something */ }) {
-                                Icon(Icons.Filled.Favorite)
-                            }
-                        }
-                )
-            }
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(text = "LayoutsCodelab")
+                },
+                actions = {
+                    IconButton(onClick = { /* Do something */ }) {
+                        Icon(Icons.Filled.Favorite)
+                    }
+                }
+            )
+        }
     ) { innerPadding ->
         BodyContent(Modifier.padding(innerPadding).padding(8.dp))
     }
@@ -176,12 +175,12 @@ fun LayoutsCodelabPreview() {
 
 @Composable
 fun MyOwnColumn(
-        modifier: Modifier = Modifier,
-        content: @Composable () -> Unit
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit
 ) {
     Layout(
-            modifier = modifier,
-            content = content
+        modifier = modifier,
+        content = content
     ) { measurables, constraints ->
         // Measure children - do not constrain views further (measure with given constraints)
         val placeables = measurables.map { measurable ->
@@ -208,13 +207,13 @@ fun MyOwnColumn(
 
 @Composable
 fun StaggeredGrid(
-        modifier: Modifier = Modifier,
-        rows: Int = 3,
-        content: @Composable () -> Unit
+    modifier: Modifier = Modifier,
+    rows: Int = 3,
+    content: @Composable () -> Unit
 ) {
     Layout(
-            modifier = modifier,
-            content = content
+        modifier = modifier,
+        content = content
     ) { measureables, constraints ->
         // Keep track of width of each row
         val rowWidths = IntArray(rows) { 0 }
@@ -237,11 +236,11 @@ fun StaggeredGrid(
 
         // Grid's width is widest row coerced to width constraints
         val width = rowWidths.maxOrNull()
-                ?.coerceIn(constraints.minWidth.rangeTo(constraints.maxWidth)) ?: constraints.minWidth
+            ?.coerceIn(constraints.minWidth.rangeTo(constraints.maxWidth)) ?: constraints.minWidth
 
         // Grid's height is the sum of the tallest element of each row coerced to height constraints
         val height = rowMaxHeights.sumBy { it }
-                .coerceIn(constraints.minHeight.rangeTo(constraints.maxHeight))
+            .coerceIn(constraints.minHeight.rangeTo(constraints.maxHeight))
 
         // Y-coordinate of each row - based on height accumulation of previous rows
         val rowY = IntArray(rows) { 0 }
@@ -257,8 +256,8 @@ fun StaggeredGrid(
             placeables.forEachIndexed { index, placeable ->
                 val row = index % rows
                 placeable.placeRelative(
-                        x = rowX[row],
-                        y = rowY[row]
+                    x = rowX[row],
+                    y = rowY[row]
                 )
                 rowX[row] += placeable.width
             }
@@ -269,17 +268,17 @@ fun StaggeredGrid(
 @Composable
 fun Chip(modifier: Modifier = Modifier, text: String) {
     Card(
-            modifier = modifier,
-            border = BorderStroke(color = Color.Black, width = Dp.Hairline),
-            shape = RoundedCornerShape(8.dp)
+        modifier = modifier,
+        border = BorderStroke(color = Color.Black, width = Dp.Hairline),
+        shape = RoundedCornerShape(8.dp)
     ) {
         Row(
-                modifier = Modifier.padding(start = 8.dp, top = 4.dp, end = 8.dp, bottom = 4.dp),
-                verticalAlignment = Alignment.CenterVertically
+            modifier = Modifier.padding(start = 8.dp, top = 4.dp, end = 8.dp, bottom = 4.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Box(
-                    modifier = Modifier.preferredSize(16.dp, 16.dp)
-                            .background(color = MaterialTheme.colors.secondary)
+                modifier = Modifier.preferredSize(16.dp, 16.dp)
+                    .background(color = MaterialTheme.colors.secondary)
             )
             Spacer(Modifier.preferredWidth(4.dp))
             Text(text = text)
@@ -293,10 +292,8 @@ fun ConstraintLayoutContent() {
         val (button1, button2, text) = createRefs()
 
         Button(
-                onClick = { /* Do something */ },
-                modifier = Modifier.constrainAs(button1) {
-                    top.linkTo(parent.top, margin = 16.dp)
-                }
+            onClick = { /* Do something */ },
+            modifier = Modifier.constrainAs(button1) { top.linkTo(parent.top, margin = 16.dp) }
         ) {
             Text(text = "Button 1")
         }
@@ -308,11 +305,11 @@ fun ConstraintLayoutContent() {
 
         val barrier = createEndBarrier(button1, text)
         Button(
-                onClick = { /* Do something */ },
-                modifier = Modifier.constrainAs(button2) {
-                    top.linkTo(parent.top, margin = 16.dp)
-                    start.linkTo(barrier)
-                }
+            onClick = { /* Do something */ },
+            modifier = Modifier.constrainAs(button2) {
+                top.linkTo(parent.top, margin = 16.dp)
+                start.linkTo(barrier)
+            }
         ) {
             Text(text = "Button 2")
         }
@@ -320,9 +317,9 @@ fun ConstraintLayoutContent() {
 }
 
 val topics = listOf(
-        "Arts & Crafts", "Beauty", "Books", "Business", "Comics", "Culinary",
-        "Design", "Fashion", "Film", "History", "Maths", "Music", "People", "Philosophy",
-        "Religion", "Social sciences", "Technology", "TV", "Writing"
+    "Arts & Crafts", "Beauty", "Books", "Business", "Comics", "Culinary",
+    "Design", "Fashion", "Film", "History", "Maths", "Music", "People", "Philosophy",
+    "Religion", "Social sciences", "Technology", "TV", "Writing"
 )
 
 @Preview
