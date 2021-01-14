@@ -1,4 +1,4 @@
-package com.quicksilver.melody.ui
+package com.quicksilver.melody.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

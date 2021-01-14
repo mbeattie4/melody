@@ -26,7 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.quicksilver.melody.R
-import com.quicksilver.melody.ui.MelodyTheme
+import com.quicksilver.melody.ui.theme.MelodyTheme
 import kotlin.math.max
 
 @Composable
@@ -280,6 +280,11 @@ fun MelodyColumn(
             }
         }
     }
+}
+
+@Composable
+fun VerticalSpace(height: Dp) {
+    Spacer(modifier = Modifier.height(height))
 }
 
 @Preview
