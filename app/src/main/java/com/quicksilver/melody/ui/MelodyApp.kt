@@ -5,7 +5,6 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.quicksilver.melody.model.samplePlaylist
-import com.quicksilver.melody.ui.home.Home
 import com.quicksilver.melody.ui.home.Playlist
 import com.quicksilver.melody.ui.theme.MelodyTheme
 

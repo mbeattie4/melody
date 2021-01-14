@@ -68,7 +68,7 @@ fun PlaylistHeader(playlist: Playlist) {
 fun SongList(songs: List<Song>) {
     LazyColumn(
         contentPadding = PaddingValues(all = 8.dp),
-        verticalArrangement = Arrangement.spacedBy(space = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(space = 8.dp)
     ) {
         items(songs) { song ->
             val (title, artist, album) = song

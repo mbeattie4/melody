@@ -37,7 +37,7 @@ fun SongTitle(title: String, modifier: Modifier = Modifier) {
     Text(
         text = title,
         color = Color.White,
-        fontSize = TextUnit.Sp(20),
+        fontSize = TextUnit.Sp(14),
         modifier = modifier
     )
 }
@@ -47,7 +47,7 @@ fun ArtistName(name: String, modifier: Modifier = Modifier) {
     Text(
         text = name,
         color = Color.Gray,
-        fontSize = TextUnit.Sp(14),
+        fontSize = TextUnit.Sp(10),
         modifier = modifier
     )
 }

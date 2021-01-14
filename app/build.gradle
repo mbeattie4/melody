@@ -42,13 +42,26 @@ android {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
+    // Base UI support
     implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
+    // Tooling support (Previews, etc.)
     implementation "androidx.compose.ui:ui-tooling:$compose_version"
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+    implementation "androidx.compose.foundation:foundation:$compose_version"
+    // Material Design
+    implementation "androidx.compose.material:material:$compose_version"
+    // Material Design icons
+    implementation "androidx.compose.material:material-icons-core:$compose_version"
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
+    // Integration with observables
+    implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
+    implementation "androidx.compose.runtime:runtime-rxjava2:$compose_version"
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-rc01'
-    implementation "androidx.navigation:navigation-compose:1.0.0-alpha04"
+    implementation "androidx.navigation:navigation-compose:1.0.0-alpha05"
+
     implementation 'com.google.android.material:material:1.2.1'
 
     implementation 'dev.chrisbanes.accompanist:accompanist-coil:0.4.1'
@@ -57,4 +70,7 @@ dependencies {
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    // UI Tests
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
 }
