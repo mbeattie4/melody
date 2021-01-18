@@ -27,8 +27,8 @@ import com.quicksilver.melody.ui.theme.typography
 import java.util.*
 
 @Composable
-fun Playlist(playlist: Playlist) {
-    Surface(color = Color.Black, modifier = Modifier.fillMaxSize()) {
+fun Playlist(playlist: Playlist, modifier: Modifier = Modifier) {
+    Surface(color = Color.Black, modifier = modifier) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.padding(top = 24.dp, bottom = 24.dp)
@@ -85,7 +85,7 @@ fun SongList(songs: List<Song>) {
 @Composable
 fun PlaylistPreview() {
     MelodyTheme {
-        Playlist(playlist = samplePlaylist)
+        Playlist(playlist = samplePlaylist, modifier = Modifier.fillMaxSize())
     }
 }
 
