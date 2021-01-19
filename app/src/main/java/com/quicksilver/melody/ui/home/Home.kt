@@ -1,11 +1,11 @@
 package com.quicksilver.melody.ui.home
 
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.quicksilver.melody.model.samplePlaylist
+import com.quicksilver.melody.ui.theme.green700
 
 @Composable
 fun MelodyHome(modifier: Modifier = Modifier) {
-    // TODO: Implement home screen
-    Playlist(playlist = samplePlaylist, modifier = modifier)
+    Text(text = "HOME", color = green700, modifier = modifier)
 }

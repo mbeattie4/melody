@@ -39,5 +39,20 @@ val sampleSongs: List<Song> = listOf(
         title = "Lost",
         artistName = "Frank Ocean",
         album = Album(coverId = R.drawable.frank_ocean)
+    ),
+    Song(
+        title = "The One",
+        artistName = "The Chainsmokers",
+        album = Album(coverId = R.drawable.chainsmokers)
+    ),
+    Song(
+        title = "All In A Day's Work",
+        artistName = "Dr. Dre, Anderson .Paak, Marsha Ambrosius",
+        album = Album(coverId = R.drawable.dr_dre)
+    ),
+    Song(
+        title = "Stronger",
+        artistName = "Kanye West",
+        album = Album(coverId = R.drawable.kanye_west_graduation)
     )
 )
