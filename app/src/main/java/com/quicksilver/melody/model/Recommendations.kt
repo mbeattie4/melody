@@ -11,6 +11,11 @@ data class Recommendation(
     val textColor: Color = Color.White
 )
 
+data class RecommendationSection(
+    val title: String,
+    val recommendations: List<Recommendation>
+)
+
 val sampleRecommendations = listOf(
     Recommendation(
         label = "Hip Hop",
@@ -37,4 +42,19 @@ val sampleRecommendations = listOf(
         coverImageId = R.drawable.chainsmokers,
         backgroundColor = Color.Yellow
     ),
+)
+
+val sampleSections = listOf(
+    RecommendationSection(
+        title = "Your top genres",
+        recommendations = sampleRecommendations
+    ),
+    RecommendationSection(
+        title = "Popular music",
+        recommendations = sampleRecommendations.take(4).shuffled()
+    ),
+    RecommendationSection(
+        title = "Suggestions for you",
+        recommendations = sampleRecommendations.takeLast(3).shuffled()
+    )
 )
