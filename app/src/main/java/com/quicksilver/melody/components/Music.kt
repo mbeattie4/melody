@@ -12,6 +12,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.outlined.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,6 +28,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import com.quicksilver.melody.R
 import com.quicksilver.melody.model.Recommendation
+import com.quicksilver.melody.model.RecommendationSection
 import com.quicksilver.melody.model.sampleRecommendations
 import com.quicksilver.melody.ui.theme.MelodyTheme
 
@@ -122,7 +124,7 @@ fun RecommendationCard(
             text = recommendation.label,
             color = Color.White,
             fontWeight = FontWeight.Bold,
-            fontSize = TextUnit.Sp(18),
+            fontSize = TextUnit.Sp(16),
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
                 .padding(start = 8.dp, top = 8.dp)
@@ -157,26 +159,57 @@ fun RecommendationCarousel(
     }
 }
 
-@Preview(showBackground = true)
 @Composable
-fun RecommendationPreview() {
-    MelodyTheme {
-        RecommendationCard(
-            recommendation = sampleRecommendations.first(),
-            modifier = Modifier.padding(16.dp)
-        )
+fun SectionHeader(text: String, modifier: Modifier = Modifier) {
+    Text(
+        text = text,
+        color = Color.White,
+        fontWeight = FontWeight.Bold,
+        fontSize = TextUnit.Sp(16),
+        modifier = modifier
+    )
+}
+
+@Composable
+fun RecommendationSection(
+    section: RecommendationSection,
+    modifier: Modifier = Modifier
+) {
+    Column(modifier = modifier) {
+        SectionHeader(text = section.title, modifier = Modifier.padding(start = 8.dp))
+        VerticalSpace(height = 8.dp)
+        RecommendationCarousel(recommendations = section.recommendations)
     }
 }
 
-@Preview(showBackground = true)
 @Composable
-fun RecommendationCarouselPreview() {
-    MelodyTheme {
-        RecommendationCarousel(
-            recommendations = sampleRecommendations,
-            modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
-        )
+fun SearchBar(modifier: Modifier = Modifier, hint: String = "Artists, songs, or podcasts") {
+    Box(
+        modifier = modifier
+            .clip(RoundedCornerShape(4.dp))
+            .background(color = Color.White)
+            .padding(8.dp)
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Icon(
+                imageVector = Icons.Outlined.Search,
+                tint = Color.Gray,
+                modifier = Modifier.padding(end = 8.dp)
+            )
+            Text(
+                text = hint,
+                color = Color.Black,
+                fontWeight = FontWeight.Bold,
+                fontSize = TextUnit.Sp(16)
+            )
+        }
     }
+}
+
+@Preview
+@Composable
+fun SearchBarPreview() {
+    SearchBar()
 }
 
 @Preview
@@ -220,6 +253,43 @@ fun SongRowPreview() {
             songTitle = "Crash & Burn",
             artistName = "G-Easy, Kehlani",
             modifier = Modifier.padding(8.dp)
+        )
+    }
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun RecommendationPreview() {
+    MelodyTheme {
+        RecommendationCard(
+            recommendation = sampleRecommendations.first(),
+            modifier = Modifier.padding(16.dp)
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun RecommendationCarouselPreview() {
+    MelodyTheme {
+        RecommendationCarousel(
+            recommendations = sampleRecommendations,
+            modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
+        )
+    }
+}
+
+@Preview
+@Composable
+fun RecommendationSectionPreview() {
+    MelodyTheme {
+        RecommendationSection(
+            section = RecommendationSection(
+                title = "Your top genres",
+                recommendations = sampleRecommendations
+            ),
+            modifier = Modifier.padding(top = 8.dp)
         )
     }
 }
