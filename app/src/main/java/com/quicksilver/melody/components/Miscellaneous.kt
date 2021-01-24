@@ -283,6 +283,48 @@ fun MelodyColumn(
 }
 
 @Composable
+fun MelodyGrid(
+    modifier: Modifier = Modifier,
+    numColumns: Int = 2,
+    content: @Composable () -> Unit
+) {
+    Layout(
+        content = content,
+        modifier = modifier
+    ) { measurables, constraints ->
+        val itemWidth = (constraints.maxWidth / numColumns)
+        val placeables = measurables.map { measurable ->
+            measurable.measure(constraints.copy(minWidth = itemWidth, maxWidth = itemWidth))
+        }
+
+        val columnHeights = Array(numColumns) { 0 }.apply {
+            placeables.forEachIndexed { index, placeable ->
+                val column = index % numColumns
+                this[column] += placeable.height
+            }
+        }
+
+        val height = (columnHeights.maxOrNull() ?: constraints.minHeight)
+            .coerceAtMost(constraints.maxHeight)
+
+        layout(
+            width = constraints.maxWidth,
+            height = height
+        ) {
+            val columnYcoords = Array(numColumns) { 0 }
+            placeables.forEachIndexed { index, placeable ->
+                val column = index % numColumns
+                placeable.place(
+                    x = column * itemWidth,
+                    y = columnYcoords[column]
+                )
+                columnYcoords[column] += placeable.height
+            }
+        }
+    }
+}
+
+@Composable
 fun VerticalSpace(height: Dp) {
     Spacer(modifier = Modifier.height(height))
 }
